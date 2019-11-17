@@ -1,22 +1,20 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const initMonthers = [
-  {name: 'Frankenstein',id:1},
-  {name: 'Dracula',id:2},
-  {name: 'Zombie',id:3},
-]
-
 function App() {
 
-  const [monsters, setMonsters] = useState(initMonthers);
+  const [monsters, setMonsters] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(users => setMonsters(users))
+  }, []);
 
   return (
     <div className="App">
-     {monsters.map(monster => (
-       <h1 key={monster.id}>{monster.name}</h1>)
-     )}
+      {monsters.map(monster => <h1 key={monster.id}>{monster.name}</h1>)}
     </div>
   );
 }
