@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from 'react';
-import { CardList } from './components/card-list/cardList'
+import { CardList } from './components/card-list/card-list'
 import './App.css';
 
 function App() {
@@ -14,9 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <CardList name="Leo"> 
-        {monsters.map(monster => <h1 key={monster.id}>{monster.name}</h1>)}
-       </CardList>
+      <CardList monsters={monsters} /> 
     </div>
   );
 }
