@@ -24,11 +24,15 @@ function App() {
     ))
   }, [searchField]);
 
+  const handleChange = e => {
+    setSearchField(e.target.value)
+  }
   return (
     <div className="App">
+      <h1> Monsters Rolodex </h1>
       <SearchBox 
         placeholder="search monster"
-        handleChange={e => setSearchField(e.target.value)}
+        handleChange={handleChange}
       />
       <CardList monsters={filteredMonsters} /> 
     </div>
