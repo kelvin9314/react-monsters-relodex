@@ -13,6 +13,7 @@ function App() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
       .then(users => {
+        console.log(users);
         setMonsters(users)
         setFilteredMonsters(users)
       })
@@ -22,7 +23,7 @@ function App() {
     setFilteredMonsters(() =>　monsters.filter(monster => 
       monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())
     ))
-  }, [searchField]);
+  }, [monsters, searchField]);
 
   const handleChange = e => {
     setSearchField(e.target.value)
